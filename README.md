@@ -1,5 +1,5 @@
 # website
 
-[Hugo][website] based website
+[Hugo][website] based website.
 
-[website]: (https://gohugo.io)
+[website](https://gohugo.io)
