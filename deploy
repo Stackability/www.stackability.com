@@ -1,0 +1,8 @@
+#!/bin/sh
+USER=tbird
+HOST=www.stackability.com
+DIR=/var/www/stackability.com/html
+
+hugo && rsync -avz --delete public/ ${USER}@${HOST}:${DIR}
+
+exit 0
