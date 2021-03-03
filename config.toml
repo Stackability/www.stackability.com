@@ -2,3 +2,5 @@ baseURL = "https://www.stackability.com/"
 languageCode = "en-us"
 title = "Stackability"
 theme = "ananke"
+publishDir = "docs"
+paginate = 5
