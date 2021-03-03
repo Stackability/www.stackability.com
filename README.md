@@ -36,9 +36,11 @@ cd website/
 git submodule add git@github.com:StaticMania/portio-hugo.git themes/portio
 git submodule init
 git submodule update
-
+rm -rf website/config.toml
+cp website/config.toml.bak website/config.toml
 rm -rf content/ docs/ resources/ archetypes/
 cp -rp themes/portio/exampleSite/. . # the "here" of . being in the website folder
+# add changes to `config.toml` from exampleSite
 hugo server -D # -D includes drafts, `hugo' builds to `publishDir`, 
                # and `hugo server` builds and hosts a localhost site at
                # http://localhost:1313/
@@ -104,4 +106,6 @@ Turns off the default action steps to build and display a Jekyll site.
 [shenanigans]:                 https://www.youtube.com/watch?v=xdXo8uJ9NSk
 [quick start]:                 https://gohugo.io/getting-started/quick-start/
 [Custom domains]:              https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site
+
 [`themes/portio/config.toml`]: themes/portio/exampleSite/config.toml
+[below]: #`config.toml`
