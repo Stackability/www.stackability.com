@@ -29,18 +29,36 @@ Then I did all these [shenanigans] to turn what was in the repo into something
 that **GitHub Pages** would build and show for our site.
 
 ```shell
-cp website/config.toml website/config.toml.bak
+# Backed up the config I had from before
+cp website/config.toml website/config.toml.bak 
+# Try to "use the force" and put in existing "website" folder
+hugo new site website --force
+# "The force is not strong with hugo", so I remove all the things
 rm -rf website/content/ website/docs/ website/resources/ website/themes/ website/archetypes/ website/config.toml
-hugo new site website --force # which force didn't work and why I had to rm -rf the above
+# Now I can do a "new" website
+hugo new site website --force
+# The rest of the commands below need to be in the "website" folder
 cd website/
+# We're trying out the StaticMania/portio-hugo theme in this iteration
 git submodule add git@github.com:StaticMania/portio-hugo.git themes/portio
+# Start your git submodule engine
 git submodule init
+# Actually get the code from the submodule
 git submodule update
+# Get rid of the generated config
 rm -rf website/config.toml
+# Restore the previous config
 cp website/config.toml.bak website/config.toml
+# This is where we remove generated stuff to get ready for demo site files
 rm -rf content/ docs/ resources/ archetypes/
-cp -rp themes/portio/exampleSite/. . # the "here" of . being in the website folder
-# add changes to `config.toml` from exampleSite
+# copy files from the "portio" theme to our "website" folder
+cp -rp themes/portio/exampleSite/. . 
+# ------------
+# I grabbed stuff from the "portio" exampleSite/config.tml file
+# And added it to our `config.toml`
+# ----------
+# My test was always to get no errors from `hugo server -D`
+# Finally it ran.. \o/
 hugo server -D # -D includes drafts, `hugo' builds to `publishDir`, 
                # and `hugo server` builds and hosts a localhost site at
                # http://localhost:1313/
